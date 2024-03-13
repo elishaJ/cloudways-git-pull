@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Retrieve input variables
+#Retrieve input variables
 email="$EMAIL"
 api_key="$API_KEY"
 app_id="$APP_ID"
