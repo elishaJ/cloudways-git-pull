@@ -1,5 +1,5 @@
-name: 'Cloudways SSH Authentication'
-description: 'Github action to setup SSH key to perform task via SSH session'
+name: 'Cloudways Git Deployment'
+description: 'Github action to start a Git pull request using CW API'
 inputs:
   email:
     description: 'Cloudways account email'
@@ -23,7 +23,7 @@ inputs:
 outputs:
   is_deployed:
     description: "Return status of git pull operation"
-    value: ${{ steps.auth-setup.outputs.is_deployed }}
+    value: ${{ steps.git-pull.outputs.is_deployed }}
 runs:
   using: "composite"
   steps:

@@ -1,24 +1,17 @@
 #!/bin/bash
 
-# Retrieve input variables
-# email="$EMAIL"
-# api_key="$API_KEY"
-# app_id="$APP_ID"
-# server_id="$SERVER_ID"
-# branch_name="$BRANCH_NAME"
-# deploy_path="$DEPLOY_PATH"
+Retrieve input variables
+email="$EMAIL"
+api_key="$API_KEY"
+app_id="$APP_ID"
+server_id="$SERVER_ID"
+branch_name="$BRANCH_NAME"
+deploy_path="$DEPLOY_PATH"
 max_retries=10
 is_deployed=
 dir=$(pwd)
 BASE_URL="https://api.cloudways.com/api/v1"
 qwik_api="https://us-central1-cw-automations.cloudfunctions.net"
-
-email="elisha.jamil@cloudways.com"
-api_key="267jRlZCVjIj4lpbbjZgmjE7FywGn3"
-app_id=4381141
-server_id=1208649  
-branch_name="main"
-deploy_path="automation"
 
 # Fetch access token
 get_token() {
