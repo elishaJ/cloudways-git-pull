@@ -1,0 +1,47 @@
+name: 'Cloudways SSH Authentication'
+description: 'Github action to setup SSH key to perform task via SSH session'
+inputs:
+  email:
+    description: 'Cloudways account email'
+    required: true
+  api_key:
+    description: 'Cloudways API key'
+    required: true
+  app_id:
+    description: 'Cloudways app ID'
+    required: true
+  server_id:
+    description: 'Cloudways server ID'
+    required: true
+  branch_name:
+    description: 'The name of the Github branch'
+    required: true
+  deploy_path:
+    description: 'The deploy path on Cloudways server'
+    required: false
+
+outputs:
+  is_deployed:
+    description: "Return status of git pull operation"
+    value: ${{ steps.auth-setup.outputs.is_deployed }}
+runs:
+  using: "composite"
+  steps:
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+    
+    - name: Run git_pull.sh
+      id: git-pull
+      continue-on-error: false
+      run: auth_setup.sh
+      shell: bash
+      env:
+        EMAIL: ${{ inputs.email }}
+        API_KEY: ${{ inputs.api_key }}
+        APP_ID: ${{ inputs.app_id }}
+        SERVER_ID: ${{ inputs.server_id }}
+        BRANCH_NAME: ${{ inputs.branch_name }}
+        DEPLOY_PATH: ${{ inputs.deploy_path }}
