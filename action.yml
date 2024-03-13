@@ -36,7 +36,7 @@ runs:
     - name: Run git_pull.sh
       id: git-pull
       continue-on-error: false
-      run: auth_setup.sh
+      run: git_pull.sh
       shell: bash
       env:
         EMAIL: ${{ inputs.email }}
